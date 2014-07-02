@@ -10,7 +10,8 @@ gulp.task("build", function() {
   gulp.src("src/**/*.js")
     .pipe(sourcemaps.init())
     .pipe(sweetjs({
-      modules: ['es6-macros']
+      modules: ['es6-macros'],
+      readtables: ['reader-module']
     }))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('build'));
