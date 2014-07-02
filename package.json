@@ -1,0 +1,10 @@
+{
+  "name": "gulp-sweetjs",
+  "version": "0.1.0",
+  "dependencies": {
+    "merge": "^1.1.3",
+    "vinyl-sourcemaps-apply": "^0.1.1",
+    "event-stream": "^3.1.5",
+    "gulp-util": "^2.2.19"
+  }
+}
