@@ -1,3 +1,4 @@
+var fs = require('fs');
 var sweet = require('sweet.js');
 var gutil = require('gulp-util');
 var applySourceMap = require('vinyl-sourcemaps-apply');
@@ -6,6 +7,24 @@ var merge = require('merge');
 
 module.exports = function(opts) {
   var moduleCache = {};
+
+  opts = merge({
+    modules: [],
+    readtables: [],
+    readableNames: false
+  }, opts);
+
+  opts.modules = opts.modules.map(function(mod) {
+    if(moduleCache[mod]) {
+      return moduleCache[mod];
+    }
+    moduleCache[mod] = sweet.loadNodeModule(process.cwd(), mod);
+    return moduleCache[mod];
+  });
+
+  opts.readtables.forEach(function(mod) {
+    sweet.setReadtable(mod);
+  });
 
   return es.through(function(file) {
     if(file.isNull()) {
@@ -18,26 +37,12 @@ module.exports = function(opts) {
       );
     }
 
-    var dest = gutil.replaceExtension(file.path, '.js');
-    opts = merge({
+    opts = merge(opts, {
       sourceMap: !!file.sourceMap,
       filename: file.path,
-      modules: [],
-      readtables: []
-    }, opts);
-
-    opts.modules = opts.modules.map(function(mod) {
-      if(moduleCache[mod]) {
-        return moduleCache[mod];
-      }
-      moduleCache[mod] = sweet.loadNodeModule(process.cwd(), mod);
-      return moduleCache[mod];
     });
 
-    opts.readtables.forEach(function(mod) {
-      sweet.setReadtable(mod);
-    });
-
+    var dest = gutil.replaceExtension(file.path, '.js');
     try {
       var res = sweet.compile(file.contents.toString('utf8'), opts);
     }

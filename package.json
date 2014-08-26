@@ -1,9 +1,13 @@
 {
   "name": "gulp-sweetjs",
-  "version": "0.1.0",
+  "version": "0.5.1",
   "description": "gulp loader for sweetjs",
   "main": "index.js",
   "author": "James Long",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jlongster/gulp-sweetjs.git"
+  },
   "dependencies": {
     "merge": "^1.1.3",
     "vinyl-sourcemaps-apply": "^0.1.1",
