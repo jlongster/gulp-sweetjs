@@ -1,6 +1,6 @@
 {
   "name": "gulp-sweetjs",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "gulp loader for sweetjs",
   "main": "index.js",
   "author": "James Long",
@@ -13,6 +13,6 @@
     "gulp-util": "^2.2.19",
     "merge": "^1.1.3",
     "sweet.js": "^0.7.1",
-    "vinyl-sourcemaps-apply": "^0.1.1"
+    "vinyl-sourcemaps-apply": "^0.1.3"
   }
 }

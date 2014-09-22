@@ -52,7 +52,9 @@ module.exports = function(opts) {
     }
 
     if(res.sourceMap) {
-      applySourceMap(file, res.sourceMap);
+      var sm = JSON.parse(res.sourceMap);
+      sm.file = file.path;
+      applySourceMap(file, sm);
     }
 
     file.contents = new Buffer(res.code);
