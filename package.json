@@ -8,6 +8,7 @@
     "type": "git",
     "url": "https://github.com/jlongster/gulp-sweetjs.git"
   },
+  "keywords": ["gulpplugin"]
   "dependencies": {
     "event-stream": "^3.1.5",
     "gulp-util": "^2.2.19",
