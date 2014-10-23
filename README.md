@@ -17,3 +17,5 @@ gulp.task("build", function() {
     .pipe(gulp.dest('build'));
 })
 ```
+
+This project is licensed under the BSD License. See the LICENSE file for more information.
