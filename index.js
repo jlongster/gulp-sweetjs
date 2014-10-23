@@ -37,14 +37,14 @@ module.exports = function(opts) {
       );
     }
 
-    opts = merge({
+    var sjsOpts = merge({
       sourceMap: !!file.sourceMap,
       filename: file.path,
     }, opts);
 
     var dest = gutil.replaceExtension(file.path, '.js');
     try {
-      var res = sweet.compile(file.contents.toString('utf8'), opts);
+      var res = sweet.compile(file.contents.toString('utf8'), sjsOpts);
     }
     catch(err) {
       console.log('error');
