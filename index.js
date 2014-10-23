@@ -37,10 +37,10 @@ module.exports = function(opts) {
       );
     }
 
-    opts = merge({
+    opts = merge(opts, {
       sourceMap: !!file.sourceMap,
       filename: file.path,
-    }, opts);
+    });
 
     var dest = gutil.replaceExtension(file.path, '.js');
     try {
