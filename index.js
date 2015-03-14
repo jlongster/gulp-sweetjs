@@ -47,7 +47,6 @@ module.exports = function(opts) {
       var res = sweet.compile(file.contents.toString('utf8'), sjsOpts);
     }
     catch(err) {
-      console.log('error');
       return this.emit('error', err);
     }
 
