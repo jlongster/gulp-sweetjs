@@ -50,12 +50,13 @@ module.exports = function(opts) {
       return this.emit('error', err);
     }
 
+    var originalContents = String(file.contents);
     file.contents = new Buffer(res.code);
 
     if(res.sourceMap) {
       var sm = JSON.parse(res.sourceMap);
       sm.sources = [file.relative];
-      sm.sourcesContent = [String(file.contents)];
+      sm.sourcesContent = [originalContents];
       sm.file = file.relative;
       applySourceMap(file, sm);
     }
