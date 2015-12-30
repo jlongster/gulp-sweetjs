@@ -1,6 +1,6 @@
 {
   "name": "gulp-sweetjs",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "gulp loader for sweetjs",
   "main": "index.js",
   "author": "James Long",
