@@ -50,13 +50,17 @@ module.exports = function(opts) {
       return this.emit('error', err);
     }
 
+    var originalContents = String(file.contents);
+    file.contents = new Buffer(res.code);
+
     if(res.sourceMap) {
       var sm = JSON.parse(res.sourceMap);
-      sm.file = file.path;
+      sm.sources = [file.relative];
+      sm.sourcesContent = [originalContents];
+      sm.file = file.relative;
       applySourceMap(file, sm);
     }
 
-    file.contents = new Buffer(res.code);
     file.path = dest;
     this.emit('data', file);
   });
